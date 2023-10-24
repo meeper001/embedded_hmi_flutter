@@ -5,10 +5,10 @@ class Multitouch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
+    return Scaffold(
+        appBar: AppBar(
       title: const Text("Multitouch"),
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-    )
-    );
+    ));
   }
 }

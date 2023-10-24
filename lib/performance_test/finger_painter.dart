@@ -33,15 +33,12 @@ class _FingerPainterState extends State<FingerPainter> {
         title: const Text("Painting"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height-100,
-              child:
-            Container(
+      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Container(
+            padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height - 100,
+            child: Container(
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.black,
@@ -51,24 +48,21 @@ class _FingerPainterState extends State<FingerPainter> {
                 borderRadius: BorderRadius.zero,
                 shape: BoxShape.rectangle,
               ),
-          child: Painter(
-            controller: painterController,
-            backgroundColor: Colors.white,
-            onDrawingEnded: (bytes) async {
-              setState(() {});
-            },
-          ),
-        )
-          )
+              child: Painter(
+                controller: painterController,
+                backgroundColor: Colors.white,
+                onDrawingEnded: (bytes) async {
+                  setState(() {});
+                },
+              ),
+            ))
       ]),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(
-            Icons.delete_forever
-          ),
-          onPressed: () {
-            painterController.clearContent(clearColor: Colors.white);
-          },
-        ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.delete_forever),
+        onPressed: () {
+          painterController.clearContent(clearColor: Colors.white);
+        },
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }

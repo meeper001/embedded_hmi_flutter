@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           textTheme: const TextTheme(
               titleLarge: TextStyle(fontSize: 38.0),
               displayLarge: TextStyle(fontSize: 38.0),
-              labelLarge: TextStyle(fontSize: 38.0, fontWeight: FontWeight.bold))),
+              labelLarge:
+                  TextStyle(fontSize: 38.0, fontWeight: FontWeight.bold))),
     );
   }
 }
@@ -62,7 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Multitouch()),
+                      MaterialPageRoute(
+                          builder: (context) => const Multitouch()),
                     );
                   },
                   child: Container(
@@ -76,7 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const PinchToZoom()),
+                      MaterialPageRoute(
+                          builder: (context) => const PinchToZoom()),
                     );
                   },
                   child: Container(
@@ -87,8 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Text("Gestures"),
                       ))),
               MaterialButton(
-                onPressed: () {
-                },
+                onPressed: () {},
                 child: Container(
                   width: MediaQuery.of(context).size.height * 0.4,
                   height: MediaQuery.of(context).size.height * 0.4,
@@ -98,10 +100,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               MaterialButton(
                 onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const FingerPainter()),
-                    );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FingerPainter()),
+                  );
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.height * 0.4,
