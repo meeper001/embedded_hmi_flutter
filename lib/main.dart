@@ -1,7 +1,7 @@
-import 'package:embedded_hmi_flutter/performance_test/FingerPainter.dart';
-import 'package:embedded_hmi_flutter/performance_test/Multitouch.dart';
+import 'package:embedded_hmi_flutter/performance_test/finger_painter.dart';
+import 'package:embedded_hmi_flutter/performance_test/multitouch.dart';
 import 'package:flutter/material.dart';
-import 'package:embedded_hmi_flutter/performance_test/PinchToZoom.dart';
+import 'package:embedded_hmi_flutter/performance_test/pinch_to_zoom.dart';
 import 'package:touch_indicator/touch_indicator.dart';
 
 void main() {
