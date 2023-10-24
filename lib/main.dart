@@ -1,3 +1,4 @@
+import 'package:embedded_hmi_flutter/performance_test/Multitouch.dart';
 import 'package:flutter/material.dart';
 import 'package:embedded_hmi_flutter/performance_test/PinchToZoom.dart';
 import 'package:touch_indicator/touch_indicator.dart';
@@ -59,6 +60,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
+                      MaterialPageRoute(builder: (context) => const Multitouch()),
+                    );
+                  },
+                  child: Container(
+                      width: MediaQuery.of(context).size.height * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      child: const Center(
+                        child: Text("Multitouch"),
+                      ))),
+              MaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
                       MaterialPageRoute(builder: (context) => const PinchToZoom()),
                     );
                   },
@@ -67,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: MediaQuery.of(context).size.height * 0.4,
                       color: Theme.of(context).colorScheme.primaryContainer,
                       child: const Center(
-                        child: Text("Pinch to zoom"),
+                        child: Text("Gestures"),
                       ))),
               MaterialButton(
                 onPressed: () {

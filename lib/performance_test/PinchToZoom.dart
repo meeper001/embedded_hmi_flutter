@@ -16,6 +16,7 @@ class PinchToZoom extends StatelessWidget{
         height: MediaQuery.of(context).size.height,
         child: InteractiveViewer(
           panEnabled: true,
+          scaleEnabled: true,
 
           boundaryMargin: const EdgeInsets.all(10000),
           minScale: 0.01,
