@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SMD Raspberry Test',
       builder: (context, child) => TouchIndicator(
+        forceInReleaseMode: true,
         child: child!,
       ),
       home: const TouchIndicator(
