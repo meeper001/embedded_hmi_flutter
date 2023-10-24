@@ -1,3 +1,4 @@
+import 'package:embedded_hmi_flutter/performance_test/FingerPainter.dart';
 import 'package:embedded_hmi_flutter/performance_test/Multitouch.dart';
 import 'package:flutter/material.dart';
 import 'package:embedded_hmi_flutter/performance_test/PinchToZoom.dart';
@@ -93,6 +94,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: MediaQuery.of(context).size.height * 0.4,
                   color: Theme.of(context).colorScheme.primaryContainer,
                   child: const Center(child: Text("Scrolling")),
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const FingerPainter()),
+                    );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: const Center(child: Text("Paint")),
                 ),
               ),
             ],
