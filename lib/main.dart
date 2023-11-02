@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Multitouch()),
+                          builder: (context) => const MultiTouch()),
                     );
                   },
                   child: Container(
