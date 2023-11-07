@@ -1,3 +1,4 @@
+import 'package:embedded_hmi_flutter/performance_test/animation_performance.dart';
 import 'package:embedded_hmi_flutter/performance_test/finger_painter.dart';
 import 'package:embedded_hmi_flutter/performance_test/multitouch.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const PinchToZoom()),
+                          builder: (context) => PinchToZoom()),
                     );
                   },
                   child: Container(
@@ -90,12 +91,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Text("Gestures"),
                       ))),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AnimationPerformance()),
+                  );
+                },
                 child: Container(
                   width: MediaQuery.of(context).size.height * 0.4,
                   height: MediaQuery.of(context).size.height * 0.4,
                   color: Theme.of(context).colorScheme.primaryContainer,
-                  child: const Center(child: Text("Scrolling")),
+                  child: const Center(child: Text("Animation Test")),
                 ),
               ),
               MaterialButton(
