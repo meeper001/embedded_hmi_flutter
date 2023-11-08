@@ -29,89 +29,91 @@ class _AnimationPerformanceState extends State<AnimationPerformance> {
         title: const Text("Animation Performance"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Stack(children: imagesList),
-      floatingActionButton: controls(context),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      body: Stack(children: imagesList + [controls(context)]),
     );
   }
 
   Widget controls(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(border: Border.all()),
-      padding: const EdgeInsets.fromLTRB(25, 80, 20, 20),
-      child: Column(
-        children: [
-          Row(children: [
-            Slider(
-              value: numberOfImages,
-              label: numberOfImages.round().toString(),
-              min: 1,
-              max: 200,
-              divisions: 199,
-              onChanged: (double value) {
-                setState(() {
-                  numberOfImages = value;
-                  imagesList = generateImagesList();
-                });
-              },
-            ),
-            const Text("Number of objects"),
-          ]),
-          Row(children: [
-            Checkbox(
-                value: enableMovement,
-                onChanged: (bool? checked) {
-                  if (checked != null) {
+    return Positioned(
+        top: 20,
+        left: 20,
+        child: Container(
+          width: 350,
+          height: 180,
+          decoration: BoxDecoration(border: Border.all()),
+          child: Column(
+            children: [
+              Row(children: [
+                Slider(
+                  value: numberOfImages,
+                  label: numberOfImages.round().toString(),
+                  min: 1,
+                  max: 200,
+                  divisions: 199,
+                  onChanged: (double value) {
                     setState(() {
-                      enableMovement = checked;
+                      numberOfImages = value;
                       imagesList = generateImagesList();
                     });
-                  }
-                }),
-            const Text("Enable Movement")
-          ]),
-          Row(children: [
-            Checkbox(
-                value: enableOpacity,
-                onChanged: (bool? checked) {
-                  if (checked != null) {
-                    setState(() {
-                      enableOpacity = checked;
-                      imagesList = generateImagesList();
-                    });
-                  }
-                }),
-            const Text("Enable Opacity")
-          ]),
-          Row(children: [
-            Checkbox(
-                value: enableScaling,
-                onChanged: (bool? checked) {
-                  if (checked != null) {
-                    setState(() {
-                      enableScaling = checked;
-                      imagesList = generateImagesList();
-                    });
-                  }
-                }),
-            const Text("Enable Scaling")
-          ]),
-          Row(children: [
-            Checkbox(
-                value: enableRotation,
-                onChanged: (bool? checked) {
-                  if (checked != null) {
-                    setState(() {
-                      enableRotation = checked;
-                      imagesList = generateImagesList();
-                    });
-                  }
-                }),
-            const Text("Enable Rotation")
-          ]),
-        ],
-      ),
-    );
+                  },
+                ),
+                const Text("Number of objects"),
+              ]),
+              Row(children: [
+                Checkbox(
+                    value: enableMovement,
+                    onChanged: (bool? checked) {
+                      if (checked != null) {
+                        setState(() {
+                          enableMovement = checked;
+                          imagesList = generateImagesList();
+                        });
+                      }
+                    }),
+                const Text("Enable Movement")
+              ]),
+              Row(children: [
+                Checkbox(
+                    value: enableOpacity,
+                    onChanged: (bool? checked) {
+                      if (checked != null) {
+                        setState(() {
+                          enableOpacity = checked;
+                          imagesList = generateImagesList();
+                        });
+                      }
+                    }),
+                const Text("Enable Opacity")
+              ]),
+              Row(children: [
+                Checkbox(
+                    value: enableScaling,
+                    onChanged: (bool? checked) {
+                      if (checked != null) {
+                        setState(() {
+                          enableScaling = checked;
+                          imagesList = generateImagesList();
+                        });
+                      }
+                    }),
+                const Text("Enable Scaling")
+              ]),
+              Row(children: [
+                Checkbox(
+                    value: enableRotation,
+                    onChanged: (bool? checked) {
+                      if (checked != null) {
+                        setState(() {
+                          enableRotation = checked;
+                          imagesList = generateImagesList();
+                        });
+                      }
+                    }),
+                const Text("Enable Rotation")
+              ]),
+            ],
+          ),
+        ));
   }
 
   List<Widget> generateImagesList() {
@@ -129,23 +131,35 @@ class AnimatedImageContainer extends AnimatedWidget {
   final double opacity;
   final double rotationSpeed;
   final double scaling;
-  final double movementSpeed;
+  final bool enableMovement;
 
   AnimatedImageContainer(
-      this.opacity, this.rotationSpeed, this.scaling, this.movementSpeed,
+      this.opacity, this.rotationSpeed, this.scaling, this.enableMovement,
       {super.key, required AnimationController controller})
       : super(listenable: controller);
 
-  final double left = math.Random().nextDouble();
-  final double bottom = math.Random().nextDouble();
+  double left = math.Random().nextDouble();
+  double bottom = math.Random().nextDouble();
 
   Animation<double> get _progress => listenable as Animation<double>;
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
+    Duration duration =
+        Duration(milliseconds: math.Random().nextInt(4000) + 500);
+    if (!enableMovement) {
+      duration = Duration.zero;
+    }
+    return AnimatedPositioned(
         left: left * MediaQuery.of(context).size.width,
         bottom: bottom * MediaQuery.of(context).size.height,
+        duration: duration,
+        onEnd: () {
+          if (enableMovement) {
+            left = math.Random().nextDouble();
+            bottom = math.Random().nextDouble();
+          }
+        },
         child: Transform.scale(
             scale: 1 + (_progress.value * scaling),
             child: Transform.rotate(
@@ -156,10 +170,6 @@ class AnimatedImageContainer extends AnimatedWidget {
                     opacity: AlwaysStoppedAnimation(opacity)),
               ),
             )));
-  }
-
-  double calcAngle(double oldAngle) {
-    return 0.0;
   }
 }
 
@@ -187,6 +197,9 @@ class _AnimatedImageExampleState extends State<AnimatedImageExample>
     vsync: this,
   )..repeat(reverse: true);
 
+  double width = 0.0;
+  double height = 0.0;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -198,21 +211,18 @@ class _AnimatedImageExampleState extends State<AnimatedImageExample>
     double opacity = 1.0;
     double rotationSpeed = 0.0;
     double scaling = 0.0;
-    double movementSpeed = 0.0;
     if (widget.enableOpacity) {
       opacity = math.Random().nextDouble();
     }
     if (widget.enableRotation) {
-      rotationSpeed = (math.Random().nextDouble() - math.Random().nextDouble()) * 8;
+      rotationSpeed =
+          (math.Random().nextDouble() - math.Random().nextDouble()) * 8;
     }
     if (widget.enableScaling) {
       scaling = math.Random().nextDouble() * 10;
     }
-    if (widget.enableMovement) {
-      movementSpeed = math.Random().nextDouble();
-    }
     return AnimatedImageContainer(
-        opacity, rotationSpeed, scaling, movementSpeed,
+        opacity, rotationSpeed, scaling, widget.enableMovement,
         controller: _controller);
   }
 }
