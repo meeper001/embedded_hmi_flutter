@@ -19,3 +19,4 @@ ENV PATH "$PATH:/home/developer/.pub-cache/bin"
 
 RUN flutter pub get
 RUN flutterpi_tool precache
+RUN mkdir -p home/developer/embedded_hmi_flutter/build
