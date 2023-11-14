@@ -4,6 +4,7 @@ import 'package:embedded_hmi_flutter/performance_test/multitouch.dart';
 import 'package:flutter/material.dart';
 import 'package:embedded_hmi_flutter/performance_test/pinch_to_zoom.dart';
 import 'package:touch_indicator/touch_indicator.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
               titleLarge: TextStyle(fontSize: 38.0),
               displayLarge: TextStyle(fontSize: 38.0),
               labelLarge:
-                  TextStyle(fontSize: 38.0, fontWeight: FontWeight.bold))),
+                  TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold))),
     );
   }
 }
@@ -48,6 +49,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final double iconHeight = 120.0;
+  final Color colorPeople = const Color(0xf0f05a96);
+  final Color colorCode = const Color(0xff6ed2f0);
+  final Color colorCommitment = const Color(0xff82c864);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,53 +64,80 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              MaterialButton(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                MaterialButton(
+                    color: colorPeople,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MultiTouch()),
+                      );
+                    },
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.height * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.pinch,
+                                size: iconHeight,
+                              ),
+                              const Text("Multitouch")
+                            ]))),
+                MaterialButton(
+                    color: colorCode,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PinchToZoom()),
+                      );
+                    },
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.height * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/gesture-two-double-tap.svg",
+                                height: iconHeight,
+                              ),
+                              const Text("Gestures"),
+                            ]))),
+                MaterialButton(
+                  color: colorCommitment,
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const MultiTouch()),
+                          builder: (context) => const AnimationPerformance()),
                     );
                   },
-                  child: Container(
-                      width: MediaQuery.of(context).size.height * 0.4,
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      child: const Center(
-                        child: Text("Multitouch"),
-                      ))),
-              MaterialButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PinchToZoom()),
-                    );
-                  },
-                  child: Container(
-                      width: MediaQuery.of(context).size.height * 0.4,
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      child: const Center(
-                        child: Text("Gestures"),
-                      ))),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnimationPerformance()),
-                  );
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.height * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: const Center(child: Text("Animation Test")),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.height * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/cursor-default-gesture.svg",
+                            height: iconHeight,
+                          ),
+                          const Text("Animation Test"),
+                        ]),
+                  ),
                 ),
-              ),
+              ]),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
               MaterialButton(
                 onPressed: () {
                   Navigator.push(

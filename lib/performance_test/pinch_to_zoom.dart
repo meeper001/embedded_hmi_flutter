@@ -60,7 +60,7 @@ class _PinchToZoomState extends State<PinchToZoom> {
                       height: _height,
                       width: _width,
                       child: const Image(
-                        image: AssetImage('assets/images2/logo.png')),
+                        image: AssetImage('assets/images/logo.png')),
                   ))),
         ));
   }

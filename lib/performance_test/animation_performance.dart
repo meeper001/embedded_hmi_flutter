@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+
 class AnimationPerformance extends StatefulWidget {
   const AnimationPerformance({Key? key}) : super(key: key);
 
@@ -29,6 +30,7 @@ class _AnimationPerformanceState extends State<AnimationPerformance> {
         title: const Text("Animation Performance"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
+
       body: Stack(children: imagesList + [controls(context)]),
     );
   }
@@ -166,7 +168,7 @@ class AnimatedImageContainer extends AnimatedWidget {
               angle: _progress.value * 2.0 * math.pi * rotationSpeed,
               child: SizedBox(
                 width: 50,
-                child: Image.asset('assets/images2/logo.png',
+                child: Image.asset('assets/images/logo.png',
                     opacity: AlwaysStoppedAnimation(opacity)),
               ),
             )));
