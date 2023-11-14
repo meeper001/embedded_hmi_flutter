@@ -41,7 +41,7 @@ class _FingerPainterState extends State<FingerPainter> {
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  filterQuality: FilterQuality.high,
+                  filterQuality: FilterQuality.none,
                   fit: BoxFit.fill,
                   image: AssetImage("assets/images/labyrinth.png"),
                 ),
