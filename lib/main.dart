@@ -1,12 +1,17 @@
 import 'package:embedded_hmi_flutter/performance_test/animation_performance.dart';
 import 'package:embedded_hmi_flutter/performance_test/finger_painter.dart';
 import 'package:embedded_hmi_flutter/performance_test/multitouch.dart';
+import 'package:embedded_hmi_flutter/performance_test/video.dart';
 import 'package:flutter/material.dart';
 import 'package:embedded_hmi_flutter/performance_test/pinch_to_zoom.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:touch_indicator/touch_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Necessary initialization for package:media_kit.
+  MediaKit.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -139,6 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               MaterialButton(
+                color: colorPeople,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -146,11 +152,52 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => const FingerPainter()),
                   );
                 },
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.height * 0.4,
                   height: MediaQuery.of(context).size.height * 0.4,
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: const Center(child: Text("Paint")),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset('assets/icons/animation-outline.svg',
+                            height: iconHeight),
+                        const Text("Paint")
+                      ]),
+                ),
+              ),
+              MaterialButton(
+                color: colorCode,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const VideoTest()),
+                  );
+                },
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset('assets/icons/animation-outline.svg',
+                            height: iconHeight),
+                        const Text("Video")
+                      ]),
+                ),
+              ),
+              MaterialButton(
+                color: colorCommitment,
+                onPressed: () {},
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/mw-logo-black-text.svg",
+                          height: iconHeight,
+                        )
+                      ]),
                 ),
               ),
             ],
