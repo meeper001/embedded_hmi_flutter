@@ -1,4 +1,4 @@
-package com.example.raspi_test
+package de.maibornwolff.embedded_hmi_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

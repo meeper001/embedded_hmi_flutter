@@ -1,6 +1,6 @@
 {
-    "name": "raspi_test",
-    "short_name": "raspi_test",
+    "name": "embedded_hmi_flutter",
+    "short_name": "embedded_hmi_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

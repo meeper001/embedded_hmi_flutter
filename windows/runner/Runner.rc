@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "raspi_test" "\0"
+            VALUE "CompanyName", "de.maibornwolff" "\0"
+            VALUE "FileDescription", "embedded_hmi_flutter" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "raspi_test" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "raspi_test.exe" "\0"
-            VALUE "ProductName", "raspi_test" "\0"
+            VALUE "InternalName", "embedded_hmi_flutter" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 MaibornWolff GmbH All rights reserved." "\0"
+            VALUE "OriginalFilename", "embedded_hmi_flutter.exe" "\0"
+            VALUE "ProductName", "embedded_hmi_flutter" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

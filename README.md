@@ -1,4 +1,4 @@
-# raspi_test
+# embedded_hmi_flutter
 
 Test Flutter on Raspberry devices
 
