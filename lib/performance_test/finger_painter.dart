@@ -36,21 +36,21 @@ class _FingerPainterState extends State<FingerPainter> {
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Container(
             padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
-            width: MediaQuery.of(context).size.width,
+            width: MediaQuery.of(context).size.width /2,
             height: MediaQuery.of(context).size.height - 100,
             child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.black,
-                  style: BorderStyle.solid,
-                  width: 4.0,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  filterQuality: FilterQuality.high,
+                  fit: BoxFit.fill,
+                  image: AssetImage("assets/images/labyrinth.png"),
                 ),
                 borderRadius: BorderRadius.zero,
                 shape: BoxShape.rectangle,
               ),
               child: Painter(
                 controller: painterController,
-                backgroundColor: Colors.white,
+                backgroundColor: const Color(0x80f05a96),
                 onDrawingEnded: (bytes) async {
                   setState(() {});
                 },
