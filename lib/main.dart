@@ -63,10 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
-        ),
         body: Center(
           child: Container(
             decoration: const BoxDecoration(
@@ -144,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
-                                "assets/icons/cursor-default-gesture.svg",
+                                "assets/icons/animation-outline.svg",
                                 height: iconHeight,
                               ),
                               const Text("Animation Test"),
@@ -152,8 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ]),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -176,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
-                                'assets/icons/animation-outline.svg',
+                                'assets/icons/cursor-default-gesture.svg',
                                 height: iconHeight),
                             const Text("Paint")
                           ]),
@@ -200,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SvgPicture.asset(
-                                'assets/icons/animation-outline.svg',
+                                'assets/icons/movie-play.svg',
                                 height: iconHeight),
                             const Text("Video")
                           ]),
