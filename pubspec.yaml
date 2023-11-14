@@ -65,6 +65,7 @@ flutter:
 
   assets:
     - assets/images/logo.png
+    - assets/images/background.png
     - assets/icons/animation-outline.svg
     - assets/icons/mw-logo-black.svg
     - assets/icons/mw-logo-black-text.svg

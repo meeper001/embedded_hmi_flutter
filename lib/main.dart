@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const TouchIndicator(
         child: MyHomePage(
-          title: 'Flutter Raspberry Test Homepage',
+          title: 'Embedded HMI Flutter',
         ),
       ),
       theme: ThemeData(
@@ -55,155 +55,179 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final double iconHeight = 120.0;
-  final Color colorPeople = const Color(0xf0f05a96);
-  final Color colorCode = const Color(0xff6ed2f0);
-  final Color colorCommitment = const Color(0xff82c864);
+  final Color colorPeople = const Color(0xccf05a96);
+  final Color colorCode = const Color(0xcc6ed2f0);
+  final Color colorCommitment = const Color(0xcc82c864);
+  final Radius buttonRadius = const Radius.circular(25);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                MaterialButton(
-                    color: colorPeople,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MultiTouch()),
-                      );
-                    },
-                    child: SizedBox(
-                        width: MediaQuery.of(context).size.height * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.pinch,
-                                size: iconHeight,
-                              ),
-                              const Text("Multitouch")
-                            ]))),
-                MaterialButton(
-                    color: colorCode,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PinchToZoom()),
-                      );
-                    },
-                    child: SizedBox(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              image: AssetImage("assets/images/background.png"),
+            )),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(buttonRadius)),
+                        color: colorPeople,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MultiTouch()),
+                          );
+                        },
+                        child: SizedBox(
+                            width: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.pinch,
+                                    size: iconHeight,
+                                  ),
+                                  const Text("Multitouch")
+                                ]))),
+                    MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(buttonRadius)),
+                        color: colorCode,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const PinchToZoom()),
+                          );
+                        },
+                        child: SizedBox(
+                            width: MediaQuery.of(context).size.height * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/icons/gesture-two-double-tap.svg",
+                                    height: iconHeight,
+                                  ),
+                                  const Text("Gestures"),
+                                ]))),
+                    MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(buttonRadius)),
+                      color: colorCommitment,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AnimationPerformance()),
+                        );
+                      },
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.height * 0.4,
                         height: MediaQuery.of(context).size.height * 0.4,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
-                                "assets/icons/gesture-two-double-tap.svg",
+                                "assets/icons/cursor-default-gesture.svg",
                                 height: iconHeight,
                               ),
-                              const Text("Gestures"),
-                            ]))),
-                MaterialButton(
-                  color: colorCommitment,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AnimationPerformance()),
-                    );
-                  },
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.height * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/cursor-default-gesture.svg",
-                            height: iconHeight,
-                          ),
-                          const Text("Animation Test"),
-                        ]),
+                              const Text("Animation Test"),
+                            ]),
+                      ),
+                    ),
+                  ]),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(buttonRadius)),
+                    color: colorPeople,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FingerPainter()),
+                      );
+                    },
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.height * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/icons/animation-outline.svg',
+                                height: iconHeight),
+                            const Text("Paint")
+                          ]),
+                    ),
                   ),
-                ),
-              ]),
-          const SizedBox(
-            height: 20,
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(buttonRadius)),
+                    color: colorCode,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const VideoTest()),
+                      );
+                    },
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.height * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                                'assets/icons/animation-outline.svg',
+                                height: iconHeight),
+                            const Text("Video")
+                          ]),
+                    ),
+                  ),
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(buttonRadius)),
+                    color: colorCommitment,
+                    onPressed: () {},
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.height * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/icons/mw-logo-black-text.svg",
+                              height: iconHeight,
+                            )
+                          ]),
+                    ),
+                  ),
+                ],
+              )
+            ]),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              MaterialButton(
-                color: colorPeople,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FingerPainter()),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset('assets/icons/animation-outline.svg',
-                            height: iconHeight),
-                        const Text("Paint")
-                      ]),
-                ),
-              ),
-              MaterialButton(
-                color: colorCode,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const VideoTest()),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset('assets/icons/animation-outline.svg',
-                            height: iconHeight),
-                        const Text("Video")
-                      ]),
-                ),
-              ),
-              MaterialButton(
-                color: colorCommitment,
-                onPressed: () {},
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/mw-logo-black-text.svg",
-                          height: iconHeight,
-                        )
-                      ]),
-                ),
-              ),
-            ],
-          )
-        ]),
-      ),
-    );
+        ));
   }
 }
