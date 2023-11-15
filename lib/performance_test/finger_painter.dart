@@ -33,11 +33,18 @@ class _FingerPainterState extends State<FingerPainter> {
         title: const Text("Painting"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      body: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Container(
-            padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+          width: MediaQuery.of(context).size.width /2,
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
+            color: Color(0x7ff05a96)
+          ),
+          child: const Center(child:Text("LABYRINTH\ntouch to draw", style: TextStyle(fontSize: 35),)),
+        ),
+        SizedBox(
             width: MediaQuery.of(context).size.width /2,
-            height: MediaQuery.of(context).size.height - 100,
+            height: MediaQuery.of(context).size.height,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -50,7 +57,7 @@ class _FingerPainterState extends State<FingerPainter> {
               ),
               child: Painter(
                 controller: painterController,
-                backgroundColor: const Color(0x80f05a96),
+                backgroundColor: const Color(0x7ff05a96),
                 onDrawingEnded: (bytes) async {
                   setState(() {});
                 },
@@ -60,7 +67,7 @@ class _FingerPainterState extends State<FingerPainter> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.delete_forever),
         onPressed: () {
-          painterController.clearContent(clearColor: Colors.white);
+          painterController.clearContent();
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
