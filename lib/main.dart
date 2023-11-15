@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
               titleLarge: TextStyle(fontSize: 38.0),
               displayLarge: TextStyle(fontSize: 38.0),
               labelLarge:
-                  TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold))),
+                  TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700))),
     );
   }
 }
