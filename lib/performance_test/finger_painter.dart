@@ -11,7 +11,6 @@ class FingerPainter extends StatefulWidget {
 }
 
 class _FingerPainterState extends State<FingerPainter> {
-  Image? image;
   late PainterController painterController;
 
   @override
