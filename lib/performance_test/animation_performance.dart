@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-
 class AnimationPerformance extends StatefulWidget {
   const AnimationPerformance({Key? key}) : super(key: key);
 
@@ -15,6 +14,7 @@ class _AnimationPerformanceState extends State<AnimationPerformance> {
   bool enableScaling = false;
   bool enableOpacity = false;
   double numberOfImages = 4.0;
+  int maxImages = 400;
   List<Widget> imagesList = [];
 
   @override
@@ -30,7 +30,6 @@ class _AnimationPerformanceState extends State<AnimationPerformance> {
         title: const Text("Animation Performance"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-
       body: Stack(children: imagesList + [controls(context)]),
     );
   }
@@ -40,82 +39,86 @@ class _AnimationPerformanceState extends State<AnimationPerformance> {
         top: 20,
         left: 20,
         child: Container(
-          width: 350,
-          height: 180,
-          decoration: BoxDecoration(border: Border.all()),
-          child: Column(
-            children: [
-              Row(children: [
-                Slider(
-                  value: numberOfImages,
-                  label: numberOfImages.round().toString(),
-                  min: 1,
-                  max: 200,
-                  divisions: 199,
-                  onChanged: (double value) {
-                    setState(() {
-                      numberOfImages = value;
-                      imagesList = generateImagesList();
-                    });
-                  },
-                ),
-                const Text("Number of objects"),
-              ]),
-              Row(children: [
-                Checkbox(
-                    value: enableMovement,
-                    onChanged: (bool? checked) {
-                      if (checked != null) {
+            width: MediaQuery.of(context).size.width / 3,
+            height: MediaQuery.of(context).size.height / 3,
+            decoration: BoxDecoration(border: Border.all()),
+            child: FittedBox(
+              alignment: Alignment.topLeft,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(children: [
+                    Slider(
+                      value: numberOfImages,
+                      label: numberOfImages.round().toString(),
+                      min: 1,
+                      max: maxImages.toDouble(),
+                      divisions: maxImages - 1,
+                      onChanged: (double value) {
                         setState(() {
-                          enableMovement = checked;
+                          numberOfImages = value;
                           imagesList = generateImagesList();
                         });
-                      }
-                    }),
-                const Text("Enable Movement")
-              ]),
-              Row(children: [
-                Checkbox(
-                    value: enableOpacity,
-                    onChanged: (bool? checked) {
-                      if (checked != null) {
-                        setState(() {
-                          enableOpacity = checked;
-                          imagesList = generateImagesList();
-                        });
-                      }
-                    }),
-                const Text("Enable Opacity")
-              ]),
-              Row(children: [
-                Checkbox(
-                    value: enableScaling,
-                    onChanged: (bool? checked) {
-                      if (checked != null) {
-                        setState(() {
-                          enableScaling = checked;
-                          imagesList = generateImagesList();
-                        });
-                      }
-                    }),
-                const Text("Enable Scaling")
-              ]),
-              Row(children: [
-                Checkbox(
-                    value: enableRotation,
-                    onChanged: (bool? checked) {
-                      if (checked != null) {
-                        setState(() {
-                          enableRotation = checked;
-                          imagesList = generateImagesList();
-                        });
-                      }
-                    }),
-                const Text("Enable Rotation")
-              ]),
-            ],
-          ),
-        ));
+                      },
+                    ),
+                    const Text("Number of objects"),
+                  ]),
+                  Row(children: [
+                    Checkbox(
+                        value: enableMovement,
+                        onChanged: (bool? checked) {
+                          if (checked != null) {
+                            setState(() {
+                              enableMovement = checked;
+                              imagesList = generateImagesList();
+                            });
+                          }
+                        }),
+                    const Text("Enable Movement")
+                  ]),
+                  Row(children: [
+                    Checkbox(
+                        value: enableOpacity,
+                        onChanged: (bool? checked) {
+                          if (checked != null) {
+                            setState(() {
+                              enableOpacity = checked;
+                              imagesList = generateImagesList();
+                            });
+                          }
+                        }),
+                    const Text("Enable Opacity")
+                  ]),
+                  Row(children: [
+                    Checkbox(
+                        value: enableScaling,
+                        onChanged: (bool? checked) {
+                          if (checked != null) {
+                            setState(() {
+                              enableScaling = checked;
+                              imagesList = generateImagesList();
+                            });
+                          }
+                        }),
+                    const Text("Enable Scaling")
+                  ]),
+                  Row(children: [
+                    Checkbox(
+                        value: enableRotation,
+                        onChanged: (bool? checked) {
+                          if (checked != null) {
+                            setState(() {
+                              enableRotation = checked;
+                              imagesList = generateImagesList();
+                            });
+                          }
+                        }),
+                    const Text("Enable Rotation")
+                  ]),
+                ],
+              ),
+            )));
   }
 
   List<Widget> generateImagesList() {
