@@ -90,10 +90,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.pinch,
-                                size: iconHeight,
-                              ),
+                              LayoutBuilder(builder: (context, constraints) {
+                                return Icon(
+                                  Icons.pinch,
+                                  size: constraints.maxWidth * 0.4,
+                                );
+                              }),
                               const Text("Multitouch")
                             ]))),
                 MaterialButton(
@@ -113,10 +115,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SvgPicture.asset(
-                                "assets/icons/gesture-two-double-tap.svg",
-                                height: iconHeight,
-                              ),
+                              LayoutBuilder(builder: (context, constraints) {
+                                return SvgPicture.asset(
+                                  "assets/icons/gesture-two-double-tap.svg",
+                                  height: constraints.maxWidth * 0.4,
+                                );
+                              }),
                               const Text("Gestures"),
                             ]))),
                 MaterialButton(
@@ -136,11 +140,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(
-                            "assets/icons/animation-outline.svg",
-                            height: iconHeight,
-                          ),
-                          const Text("Animation Test"),
+                          LayoutBuilder(builder: (context, constraints) {
+                            return SvgPicture.asset(
+                              "assets/icons/animation-outline.svg",
+                              height: constraints.maxWidth * 0.4,
+                            );
+                          }),
+                          const Text("Animation"),
                         ]),
                   ),
                 ),
@@ -168,10 +174,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(
+                        LayoutBuilder(builder: (context, constraints) {
+                          return SvgPicture.asset(
                             'assets/icons/cursor-default-gesture.svg',
-                            height: iconHeight),
-                        const Text("Paint")
+                            height: constraints.maxWidth * 0.4,
+                          );
+                        }),
+                        const Text("Labyrinth")
                       ]),
                 ),
               ),
@@ -191,9 +200,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset('assets/icons/movie-play.svg',
-                            height: iconHeight),
-                        const Text("Video")
+                        LayoutBuilder(builder: (context, constraints) {
+                          return SvgPicture.asset(
+                            'assets/icons/movie-play.svg',
+                            height: constraints.maxWidth * 0.4,
+                          );
+                        }),
+                        const Text("Videoplayer")
                       ]),
                 ),
               ),
@@ -208,10 +221,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(
-                          "assets/icons/mw-logo-black-text.svg",
-                          height: iconHeight,
-                        )
+                        LayoutBuilder(builder: (context, constraints) {
+                          return SvgPicture.asset(
+                            "assets/icons/mw-logo-black-text.svg",
+                            height: constraints.maxWidth * 0.4,
+                          );
+                        }),
                       ]),
                 ),
               ),
