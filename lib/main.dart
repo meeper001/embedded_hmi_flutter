@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.cover,
           image: AssetImage("assets/images/background.png"),
         )),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
