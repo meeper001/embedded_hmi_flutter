@@ -8,11 +8,13 @@ import 'package:media_kit/media_kit.dart';
 import 'package:touch_indicator/touch_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:statsfl/statsfl.dart';
+import 'package:fvp/fvp.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // Necessary initialization for package:media_kit.
   MediaKit.ensureInitialized();
+  registerWith(options: {'platforms': ['windows', 'android', 'linux']});
   runApp(StatsFl(child: const MyApp()));
 }
 

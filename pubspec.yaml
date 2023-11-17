@@ -36,7 +36,9 @@ dependencies:
   finger_painter: ^1.1.0
   flutter_svg: ^2.0.9
   statsfl: ^2.3.0
-
+  fvp: ^0.11.0
+  video_player: ^2.8.1
+  video_controls: ^1.0.0
   media_kit: ^1.1.10+1                             # Primary package.
   media_kit_video: ^1.2.4                        # For video rendering.
   media_kit_libs_video: ^1.0.4
@@ -74,6 +76,8 @@ flutter:
     - assets/icons/mw-logo-black-text.svg
     - assets/icons/cursor-default-gesture.svg
     - assets/icons/gesture-two-double-tap.svg
+    - assets/videos/imagefilm_low_res.avi
+    - assets/videos/imagefilm.mp4
 
   fonts:
     - family: Poppins
