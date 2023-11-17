@@ -36,10 +36,10 @@ class MyApp extends StatelessWidget {
                 displayLarge: TextStyle(fontSize: 38.0),
                 labelLarge:
                     TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700))),
-        home:  const TouchIndicator(
-                child: MyHomePage(
-              title: 'Embedded HMI Flutter',
-            )));
+        home: const TouchIndicator(
+            child: MyHomePage(
+          title: 'Embedded HMI Flutter',
+        )));
   }
 }
 
@@ -53,7 +53,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final double iconHeight = 120.0;
   final Color colorPeople = const Color(0xccf05a96);
   final Color colorCode = const Color(0xcc6ed2f0);
   final Color colorCommitment = const Color(0xcc82c864);
@@ -96,7 +95,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   size: constraints.maxWidth * 0.4,
                                 );
                               }),
-                              const Text("Multitouch")
+                              const FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'Multitouch',
+                                ),
+                              )
                             ]))),
                 MaterialButton(
                     shape: RoundedRectangleBorder(
@@ -121,7 +125,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   height: constraints.maxWidth * 0.4,
                                 );
                               }),
-                              const Text("Gestures"),
+                              const FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'Gestures',
+                                ),
+                              )
                             ]))),
                 MaterialButton(
                   shape: RoundedRectangleBorder(
@@ -146,7 +155,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: constraints.maxWidth * 0.4,
                             );
                           }),
-                          const Text("Animation"),
+                          const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'Animation',
+                            ),
+                          )
                         ]),
                   ),
                 ),
@@ -180,7 +194,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: constraints.maxWidth * 0.4,
                           );
                         }),
-                        const Text("Labyrinth")
+                        const FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            'Labyrinth',
+                          ),
+                        )
                       ]),
                 ),
               ),
@@ -206,7 +225,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: constraints.maxWidth * 0.4,
                           );
                         }),
-                        const Text("Videoplayer")
+                        const FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            'Videoplayer',
+                          ),
+                        )
                       ]),
                 ),
               ),
