@@ -39,7 +39,7 @@ class _AnimationPerformanceState extends State<AnimationPerformance> {
         top: 20,
         left: 20,
         child: Container(
-            width: MediaQuery.of(context).size.width / 3,
+            width: MediaQuery.of(context).size.width / 2.5,
             height: MediaQuery.of(context).size.height / 3,
             decoration: BoxDecoration(border: Border.all()),
             child: FittedBox(
